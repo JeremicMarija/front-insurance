@@ -1,11 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Insured from '../views/Insured.vue'
+import AddInsured from '../views/AddInsured.vue'
+import EditInsured from '../views/EditInsured.vue'
+import PageNotFound from '../views/PageNotFound.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
+    redirect: '/insureds',
     component: HomeView
+  },
+  {
+    path: '/insureds',
+    name: 'Insureds',
+    component: Insured
+  },
+  {
+    path: '/insureds/add',
+    name: 'AddInsured',
+    component: AddInsured
+  },
+  {
+    path: '/insureds/edit/:insuredId',
+    name: 'EditInsured',
+    component: EditInsured
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'PageNotFound',
+    component: PageNotFound
   },
   {
     path: '/about',
