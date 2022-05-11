@@ -5,13 +5,13 @@
     <div class="collapse navbar-collapse">
     <ul class="navbar-nav">
      <li class="nav-item">
-      <router-link class="nav-link px-4" to="/">Insureds</router-link>
+      <router-link class="nav-link px-4" to="/insureds">Insureds</router-link>
      </li>
      <li class="nav-item">
-      <router-link class="nav-link px-4" to="/">Vehicles</router-link>
+      <router-link class="nav-link px-4" to="/vehicles">Vehicles</router-link>
      </li>
      <li class="nav-item">
-      <router-link class="nav-link px-4" to="/">Material Damages</router-link>
+      <router-link class="nav-link px-4" to="/materialDamages">Material Damages</router-link>
      </li>
     </ul>
 

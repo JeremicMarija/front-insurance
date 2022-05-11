@@ -4,12 +4,14 @@ import Insured from '../views/Insured.vue'
 import AddInsured from '../views/AddInsured.vue'
 import EditInsured from '../views/EditInsured.vue'
 import PageNotFound from '../views/PageNotFound.vue'
+import Vehicle from '../views/Vehicle.vue'
+import MaterialDamage from '../views/MaterialDamage.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: '/insureds',
+    // redirect: '/insureds',
     component: HomeView
   },
   {
@@ -26,6 +28,16 @@ const routes = [
     path: '/insureds/edit/:insuredId',
     name: 'EditInsured',
     component: EditInsured
+  },
+  {
+    path: '/vehicles',
+    name: 'Vehicles',
+    component: Vehicle
+  },
+  {
+    path: '/materialDamages',
+    name: 'MaterialDamages',
+    component: MaterialDamage
   },
   {
     path: '/:pathMatch(.*)*',

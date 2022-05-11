@@ -1,6 +1,11 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col text-center">
+        <h2 class="text-success mb-5">Welcome To Insurance App</h2>
+        <img src="../assets/car-insurance.jpg">
+      </div>
+    </div>
   </div>
 </template>
 
