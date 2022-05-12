@@ -6,23 +6,24 @@
    </div>
   </div>
  </div>
+ <!-- <pre>{{vehicle}}</pre> -->
  <div class="container">
   <div class="row">
    <div class="col-md-4">
-    <form action="">
+    <form action="" @submit.prevent="submitCreate()">
      <div class="mb-2">
-      <input type="text" class="form-control" placeholder="Brand">
+      <input v-model="vehicle.brand" type="text" class="form-control" placeholder="Brand">
      </div>
      <div class="mb-2">
-      <input type="text" class="form-control" placeholder="Model">
+      <input v-model="vehicle.model" type="text" class="form-control" placeholder="Model">
      </div>
      <div class="mb-2">
-      <input type="text" class="form-control" placeholder="Registartion Number">
+      <input v-model="vehicle.registrationNumber" type="text" class="form-control" placeholder="Registartion Number">
      </div>
      <div class="mb-2">
-      <select name="" id="" class="form-control">
-       <option disabled value="">Choose Insured...</option>
-       <option value="Mika Mikic">Mika Mikic</option>
+      <select name="" id="" v-model="vehicle.insuredId" class="form-control" v-if="insureds.length > 0">
+       <option value="">Choose Insured...</option>
+       <option :value="insured.id" v-for="insured of insureds" :key="insured.id">{{insured.name + ' ' + insured.surname}}</option>
       </select>
      </div>
      <div class="mb-2">
@@ -34,14 +35,42 @@
  </div>
 </template>
 <script>
+import {InsuredService} from "@/services/InsuredService";
+import {VehicleService} from "@/services/VehicleService";
+
 export default {
  name: 'AddVehicle',
  data: function(){
   return{
+   vehicle:{
    brand: '',
    model: '',
    registrationNumber: '',
-   insured: [],
+   insuredId: '',
+   },
+   insureds:[]
+  }
+ },
+ created: async function(){
+  try {
+   let response = await InsuredService.getAllInsureds();
+   this.insureds = response.data;
+  } catch (error) {
+   console.log(error);
+  }
+ },
+ methods: {
+  submitCreate: async function(){
+   try {
+    let response = await VehicleService.createVehicle(this.vehicle);
+    if(response){
+     return this.$router.push('/vehicles');
+    }else{
+     return this.$router.push('/vehicles/add');
+    }
+   } catch (error) {
+    console.log(error);
+   }
   }
  }
 }
