@@ -59,7 +59,7 @@ export default {
    try {
     let response = await InsuredService.createInsured(this.insured);
     if(response){
-     return this.$router.push('/');
+     return this.$router.push('/insureds');
     }else{
      return this.$router.push('/insureds/add')
     }

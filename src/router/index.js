@@ -5,6 +5,7 @@ import AddInsured from '../views/AddInsured.vue'
 import EditInsured from '../views/EditInsured.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import Vehicle from '../views/Vehicle.vue'
+import AddVehicle from '../views/AddVehicle.vue'
 import MaterialDamage from '../views/MaterialDamage.vue'
 
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
     path: '/vehicles',
     name: 'Vehicles',
     component: Vehicle
+  },
+  {
+    path: '/vehicles/add',
+    name: 'AddVehicles',
+    component: AddVehicle
   },
   {
     path: '/materialDamages',
