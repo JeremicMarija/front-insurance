@@ -7,6 +7,7 @@ import PageNotFound from '../views/PageNotFound.vue'
 import Vehicle from '../views/Vehicle.vue'
 import AddVehicle from '../views/AddVehicle.vue'
 import MaterialDamage from '../views/MaterialDamage.vue'
+import AddMaterialDamages from '../views/AddMaterialDamages.vue'
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
     path: '/materialDamages',
     name: 'MaterialDamages',
     component: MaterialDamage
+  },
+  {
+    path: '/materialDamages/add',
+    name: 'AddMaterialDamages',
+    component: AddMaterialDamages
   },
   {
     path: '/:pathMatch(.*)*',

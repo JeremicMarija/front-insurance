@@ -17,5 +17,10 @@ export class VehicleService{
   return axios.post(dataURL, vehicle);
  }
 
+ static updateVehicle(vehicle, vehicleId){
+  let dataURL = `${this.serverURL}/vehicles/${vehicleId}`;
+  return axios.put(dataURL, vehicle);
+ }
+
 
 }
