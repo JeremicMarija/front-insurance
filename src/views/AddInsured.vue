@@ -9,7 +9,7 @@
  <div class="container mt-3">
   <div class="row">
    <div class="col-md-4">
-    <form action="" @submit.prevent="submitCreate()">
+    <form action="" @submit.prevent="insuredCreate()">
      <div class="mb-2">
       <input v-model="insured.name" type="text" class="form-control" placeholder="First Name">
      </div>
@@ -55,7 +55,7 @@ export default {
   }
  },
  methods: {
-  submitCreate: async function(){
+  insuredCreate: async function(){
    try {
     let response = await InsuredService.createInsured(this.insured);
     if(response){
@@ -72,5 +72,11 @@ export default {
 </script>
 
 <style scoped>
-
+.form-control::-webkit-input-placeholder {
+ color: #212529;
+ /* opacity: 0.8; */
+}
+.form-control{
+ opacity: 0.6;
+}
 </style>

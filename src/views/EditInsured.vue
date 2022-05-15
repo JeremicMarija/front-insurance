@@ -32,7 +32,7 @@
  <div class="container mt-3" v-if="!loading && isDone()">
   <div class="row">
    <div class="col-md-4">
-    <form action="" @submit.prevent="updateSubmit()">
+    <form action="" @submit.prevent="updateInsured()">
      <div class="mb-2">
       <input v-model="insured.name" type="text" class="form-control" placeholder="First Name">
      </div>
@@ -99,11 +99,11 @@ export default {
   isDone: function(){
    return Object.keys(this.insured).length > 0;
   },
-  updateSubmit: async function(){
+  updateInsured: async function(){
    try {
     let response = await InsuredService.updateInsured(this.insured, this.insuredId);
     if(response){
-     return this.$router.push('/')
+     return this.$router.push('/insureds')
     }else{
      return this.$router.push(`/insureds/edit/${this.insuredId}`)
     }

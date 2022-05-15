@@ -60,7 +60,7 @@
        <td>{{vehicle.registrationNumber}}</td>
        <td>{{vehicle.insured.name + ' ' + vehicle.insured.surname}}</td>
        <td>
-        <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+        <router-link :to="`/vehicles/edit/${vehicle.id}`" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></router-link>
         </td>
       </tr>
      </tbody>

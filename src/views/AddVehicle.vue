@@ -10,7 +10,7 @@
  <div class="container">
   <div class="row">
    <div class="col-md-4">
-    <form action="" @submit.prevent="submitCreate()">
+    <form action="" @submit.prevent="vehicleCreate()">
      <div class="mb-2">
       <input v-model="vehicle.brand" type="text" class="form-control" placeholder="Brand">
      </div>
@@ -22,7 +22,7 @@
      </div>
      <div class="mb-2">
       <select name="" id="" v-model="vehicle.insuredId" class="form-control" v-if="insureds.length > 0">
-       <option value="">Choose Insured...</option>
+       <option value="">Select Insured...</option>
        <option :value="insured.id" v-for="insured of insureds" :key="insured.id">{{insured.name + ' ' + insured.surname}}</option>
       </select>
      </div>
@@ -33,6 +33,7 @@
    </div>
   </div>
  </div>
+ <pre>{{vehicle}}</pre>
 </template>
 <script>
 import {InsuredService} from "@/services/InsuredService";
@@ -60,7 +61,7 @@ export default {
   }
  },
  methods: {
-  submitCreate: async function(){
+  vehicleCreate: async function(){
    try {
     let response = await VehicleService.createVehicle(this.vehicle);
     if(response){
@@ -76,5 +77,10 @@ export default {
 }
 </script>
 <style scoped>
-
+.form-control::-webkit-input-placeholder {
+ color: #212529;
+}
+.form-control{
+ opacity: 0.6;
+}
 </style>

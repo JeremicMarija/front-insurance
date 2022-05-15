@@ -6,6 +6,7 @@ import EditInsured from '../views/EditInsured.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import Vehicle from '../views/Vehicle.vue'
 import AddVehicle from '../views/AddVehicle.vue'
+import EditVehicle from '../views/EditVehicle.vue'
 import MaterialDamage from '../views/MaterialDamage.vue'
 import AddMaterialDamages from '../views/AddMaterialDamages.vue'
 
@@ -40,6 +41,11 @@ const routes = [
     path: '/vehicles/add',
     name: 'AddVehicles',
     component: AddVehicle
+  },
+  {
+    path: '/vehicles/edit/:vehicleId',
+    name: 'EditVehicles',
+    component: EditVehicle
   },
   {
     path: '/materialDamages',
