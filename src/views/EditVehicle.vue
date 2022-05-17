@@ -42,7 +42,7 @@
        <input v-model="vehicle.registrationNumber" type="text" class="form-control" placeholder="Registartion Number">
       </div>
       <div class="mb-2">
-       <select name="" id="" v-model="vehicle.insured.id" class="form-control" v-if="insureds.length > 0">
+       <select name="" id="" v-model="vehicle.insuredId" class="form-control" v-if="insureds.length > 0">
         <option value="">Select Insured...</option>
         <option :value="insured.id" v-for="insured of insureds" :key="insured.id">{{insured.name}}</option>
       </select>
@@ -55,7 +55,8 @@
    </div>
   </div>
 
-  <!-- <pre>{{vehicle}}</pre> -->
+  <pre>{{vehicle}}</pre>
+  <pre>{{insured}}</pre>
 </template>
 
 <script>

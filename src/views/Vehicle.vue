@@ -67,11 +67,12 @@
     </table>
    </div>
   </div>
-
  </div>
+ <!-- <pre>{{vehicles}}</pre> -->
 </template>
 <script>
 import {VehicleService} from "@/services/VehicleService";
+import {InsuredService} from "@/services/InsuredService";
 import Spinner from '@/components/Spinner.vue';
 export default {
  name: 'Vehicle',
@@ -82,7 +83,8 @@ export default {
   return{
    loading: false,
    vehicles:[],
-   errorMessage: null
+   errorMessage: null,
+  //  insureds: [],
   }
  },
  created: async function(){
@@ -90,7 +92,20 @@ export default {
    this.loading = true;
    let response = await VehicleService.getAllVehicles();
    this.vehicles = response.data;
-   this.loading = false;
+  //  for (var i = 0; i < this.vehicles.length; i++){
+  //    console.log(this.vehicles[i].insuredId);
+  //     let insuredResponse = await InsuredService.getInsured(this.vehicles[i].insuredId);
+  //     // this.insureds = insuredResponse.data;
+  //     // console.log(this.insureds);
+  //     // console.log(insuredResponse.data);
+  //     this.insureds.push(insuredResponse.data);
+  //     // let arrInsureds = [];
+  //     // arrInsureds.push(insuredResponse.data);
+  //  }
+  //  this.insureds = insuredResponse.data;
+  //  console.log(this.insureds);
+
+    this.loading = false;
   } catch (error) {
    this.errorMessage = error;
    this.loading = false;
