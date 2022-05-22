@@ -59,8 +59,8 @@
    </div>
   </div>
 
-  <!-- <pre>{{vehicle}}</pre>
-  <pre>{{insured}}</pre> -->
+  <pre>{{vehicle}}</pre>
+  <!-- <pre>{{insured}}</pre> -->
 </template>
 
 <script>

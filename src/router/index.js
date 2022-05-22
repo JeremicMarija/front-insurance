@@ -8,7 +8,9 @@ import Vehicle from '../views/Vehicle.vue'
 import AddVehicle from '../views/AddVehicle.vue'
 import EditVehicle from '../views/EditVehicle.vue'
 import MaterialDamage from '../views/MaterialDamage.vue'
-import AddMaterialDamages from '../views/AddMaterialDamages.vue'
+import AddMaterialDamage from '../views/AddMaterialDamage.vue'
+import EditMaterialDamage from '../views/EditMaterialDamage.vue'
+import DamageItem from '../views/DamageItem.vue'
 
 const routes = [
   {
@@ -54,8 +56,18 @@ const routes = [
   },
   {
     path: '/materialDamages/add',
-    name: 'AddMaterialDamages',
-    component: AddMaterialDamages
+    name: 'AddMaterialDamage',
+    component: AddMaterialDamage
+  },
+  {
+    path: '/materialDamages/edit/:materialDamageId',
+    name: 'EditMaterialDamage',
+    component: EditMaterialDamage
+  },
+  {
+    path: '/materialdamageitems',
+    name: 'DamageItem',
+    component: DamageItem
   },
   {
     path: '/:pathMatch(.*)*',
