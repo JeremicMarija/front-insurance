@@ -62,7 +62,8 @@
        <td>{{materialDamage.vehicle.registrationNumber}}</td>
        <td>
         <router-link :to="`/materialDamages/edit/${materialDamage.id}`" class="btn btn-success btn-sm mx-2"><i class="fas fa-edit"></i></router-link>
-        <router-link :to="`/materialdamageitems/`" class="btn btn-success btn-sm">Add Damage Item</router-link>
+        <!-- <router-link :to="`/materialDamages/createItem/${materialDamage.id}`" class="btn btn-success btn-sm">Add Damage Item</router-link> -->
+        <router-link :to="`/materialDamages/${materialDamage.id}/createItem`" class="btn btn-success btn-sm">Add Damage Item</router-link>
        </td>
       </tr>
      </tbody>
@@ -70,7 +71,7 @@
    </div>
   </div>
  </div>
- <pre>{{materialDamages}}</pre>
+ <!-- <pre>{{materialDamages}}</pre> -->
 </template>
 
 

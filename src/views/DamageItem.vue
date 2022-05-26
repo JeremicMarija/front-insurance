@@ -31,21 +31,24 @@
  <div class="container">
   <div class="row">
    <div class="col-md-4">
-    <form action="">
+    <form action="" @submit.prevent="createDamageItem()">
      <div class="mb-2">
-      <input type="text" class="form-control" placeholder="Item Number">
+      <input v-model="damageItem.itemNumber" type="number" class="form-control" placeholder="Item Number">
      </div>
      <div class="mb-2">
-      <input type="text" class="form-control" placeholder="Description">
+      <input v-model="damageItem.description" type="text" class="form-control" placeholder="Description">
      </div>
      <div class="mb-2">
-      <input type="number" class="form-control" placeholder="Estimated Price">
+      <input v-model="damageItem.estimatedPrice" type="number" class="form-control" placeholder="Estimated Price">
      </div>
      <div class="mb-2">
-      <input type="text" class="form-control" placeholder="Damage Type ID">
+      <select v-model="damageItem.damageTypeId"  class="form-control" v-if="damageTypes.length > 0">
+       <option value="">Select Damage Type...</option>
+       <option :value="damageType.id" v-for="damageType of damageTypes" :key="damageType.id">{{damageType.name}}</option>
+      </select>
      </div>
      <div class="mb-2">
-      <input type="text" class="form-control" placeholder="Material Damage ID">
+      <input v-model="materialDamage.id" type="text" class="form-control" placeholder="Material Damage ID">
      </div>
      <div class="mb-2">
       <input type="submit" class="btn btn-success" value="Create Damage Item">
@@ -55,54 +58,84 @@
   </div>
  </div>
  <pre>{{damageItem}}</pre>
+ <pre>{{materialDamage}}</pre>
+ <!-- <pre>{{damageTypes}}</pre> -->
 </template>
 
 <script>
 import Spinner from '@/components/Spinner.vue'
 import {MaterialDamageService} from "@/services/MaterialDamageService";
 import {DamageItemService} from "@/services/DamageItemService";
+import {DamageTypeService} from "@/services/DamageTypeService";
+
 export default {
  name: "DamageItem",
  components: {
   Spinner,
  },
  data: function(){
+
+  const DamageItemMaterialDamageId = this.$route.params.materialDamageId;
+
   return{
    damageItemId: this.$route.params.damageItemId,
-   // materialDamageId : this.$route.params.materialDamageId,
+   materialDamageId: this.$route.params.materialDamageId,
    loading: false,
+   materialDamage: {
+    entryDate: '',
+    typeOfDamage: '',
+    cityId: '',
+    vehicleId: '',
+   },
+   // loading: false,
    damageItem:{
     itemNumber: '',
     description: '',
     estimatedPrice: '',
     damageTypeId: '',
-    materialDamageId: '',
+    materialDamageId: DamageItemMaterialDamageId,
    },
+   damageTypes:[],
    errorMessage: null,
-   materalDamage: {
-    entryDate: '',
-    typeOfDamage: '',
-    cityId: '',
-    vehicleId: '',
-   }
   }
  },
  created: async function(){
   try {
    this.loading = false;
-   let responseDamageItem = await DamageItemService.getDamageItem(2);
-   console.log(responseDamageItem.data);
-   // let responseMaterialDamage = await MaterialDamageService.getMaterialDamage(this.damageItem.materialDamageId);
-   // console.log(responseMaterialDamage.data);
+   let responseMaterialDamage = await MaterialDamageService.getMaterialDamage(this.materialDamageId);
+   this.materialDamage = responseMaterialDamage.data;
+   let responseDamageType = await DamageTypeService.getAllDamageTypes();
+   // console.log(responseDamageType.data);
+   this.damageTypes = responseDamageType.data;
+ 
   } catch (error) {
    this.errorMessage = error;
    this.loading = false;
   }
+ },
+ methods: {
+  createDamageItem: async function(){
+   try {
+    let response = await DamageItemService.createDamageItem(this.damageItem, this.damageItemId);
+    if(response){
+     return this.$router.push('/materialDamages');
+    }else{
+     return this.$router.push(`/materialDamages/${materialDamage.id}/createItem`)
+    }
+   } catch (error) {
+    console.log(error);
+   }
+  }
  }
-
 }
 </script>
 
 <style scoped>
-
+.form-control::-webkit-input-placeholder {
+ color: #212529;
+ /* opacity: 0.8; */
+}
+.form-control{
+ opacity: 0.6;
+}
 </style>

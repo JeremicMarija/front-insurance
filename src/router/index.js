@@ -65,7 +65,7 @@ const routes = [
     component: EditMaterialDamage
   },
   {
-    path: '/materialdamageitems',
+    path: '/materialDamages/:materialDamageId/createItem',
     name: 'DamageItem',
     component: DamageItem
   },

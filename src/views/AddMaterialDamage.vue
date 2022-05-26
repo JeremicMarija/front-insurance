@@ -91,3 +91,12 @@ export default {
  }
 }
 </script>
+<style scoped>
+.form-control::-webkit-input-placeholder {
+ color: #212529;
+ /* opacity: 0.8; */
+}
+.form-control{
+ opacity: 0.6;
+}
+</style>
