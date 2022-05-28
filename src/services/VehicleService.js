@@ -7,9 +7,14 @@ export class VehicleService{
   let dataURL = `${this.serverURL}/vehicles`;
   return axios.get(dataURL);
  }
+ 
  static getVehicle(vehicleId){
   let dataURL = `${this.serverURL}/vehicles/${vehicleId}`;
   return axios.get(dataURL);
+ }
+ static getVehiclesByInsured(insuredId){
+  let dataURL = `${this.serverURL}/vehicles/insured/${insuredId}`;
+  return axios.get(dataURL)
  }
 
  static createVehicle(vehicle){

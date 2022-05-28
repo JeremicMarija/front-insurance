@@ -66,6 +66,7 @@
         <router-link :to="`/insureds/edit/${insured.id}`" class="btn btn-success btn-sm">
          <i class="fas fa-edit"></i>
         </router-link>
+        <router-link :to="`/vehicles/insured/${insured.id}`"  class="btn btn-success btn-sm mx-2">View vehicles</router-link>
        </td>
       </tr>
      </tbody>

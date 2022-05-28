@@ -11,6 +11,7 @@ import MaterialDamage from '../views/MaterialDamage.vue'
 import AddMaterialDamage from '../views/AddMaterialDamage.vue'
 import EditMaterialDamage from '../views/EditMaterialDamage.vue'
 import DamageItem from '../views/DamageItem.vue'
+import ShowVehiclesOfInsured from '../views/ShowVehiclesOfInsured.vue'
 
 const routes = [
   {
@@ -68,6 +69,11 @@ const routes = [
     path: '/materialDamages/:materialDamageId/createItem',
     name: 'DamageItem',
     component: DamageItem
+  },
+  {
+    path: '/vehicles/insured/:insuredId',
+    name: 'ShowVehiclesOfInsured',
+    component: ShowVehiclesOfInsured
   },
   {
     path: '/:pathMatch(.*)*',
