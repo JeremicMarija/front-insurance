@@ -42,13 +42,19 @@
        <td>{{vehicle.registrationNumber}}</td>
        <td>{{vehicle.insured.name + ' ' + vehicle.insured.surname}}</td>
        <td>
-        <button class="btn btn-success btn-sm">Add Material Damage</button>
+        <router-link :to="`/materialDamages/add`" class="btn btn-success btn-sm">Add Material Damage</router-link>
        </td>
       </tr>
      </tbody>
     </table>
    </div>
   </div>
+  <div class="row mt-3">
+   <div class="col back-btn">
+    <router-link to="/insureds" class="btn btn-success btn-sm"><i class="fa fa-arrow-alt-circle-left"></i> Back</router-link>
+   </div>
+  </div>
+  
  </div>
  
  <!-- <pre>{{insuredId}}</pre>

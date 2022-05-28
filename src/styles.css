@@ -4,3 +4,6 @@ body{
  font-family: 'Poppins', sans-serif;
  background-color: #f0fdf0;
 }
+.back-btn{
+ text-align: end;
+}

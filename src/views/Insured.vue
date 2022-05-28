@@ -9,11 +9,11 @@
      <div class="col-md-6 mt-3">
       <div class="row">
        <div class="col">
-      <input type="text" class="form-control" placeholder="Search Name">
-     </div>
-     <div class="col">
-      <input type="submit" class="btn btn-outline-dark">
-     </div>
+        <input type="text" class="form-control" placeholder="Search Name">
+       </div>
+       <div class="col">
+        <input type="submit" class="btn btn-outline-dark">
+       </div>
       </div>
      </div>
     </div>
@@ -67,6 +67,7 @@
          <i class="fas fa-edit"></i>
         </router-link>
         <router-link :to="`/vehicles/insured/${insured.id}`"  class="btn btn-success btn-sm mx-2">View vehicles</router-link>
+        <router-link :to="`/vehicles/add`" class="btn btn-success btn-sm">Add Vehicle</router-link>
        </td>
       </tr>
      </tbody>
