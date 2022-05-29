@@ -21,7 +21,7 @@
       <input v-model="vehicle.registrationNumber" type="text" class="form-control" placeholder="Registartion Number">
      </div>
      <div class="mb-2">
-      <select name="" id="" v-model="vehicle.insuredId" class="form-control" v-if="insureds.length > 0">
+      <select :disabled = "isDisabled" name="" ref="selectInsured" id="selectInsured" v-model="vehicle.insuredId" class="form-control" v-if="insureds.length > 0">
        <option value="">Select Insured...</option>
        <option :value="insured.id" v-for="insured of insureds" :key="insured.id">{{insured.name + ' ' + insured.surname}}</option>
       </select>
@@ -47,16 +47,24 @@ import {VehicleService} from "@/services/VehicleService";
 export default {
  name: 'AddVehicle',
  data: function(){
+  const vInsuredId = this.$route.params.insuredId || '';
+
   return{
+   insuredId: this.$route.params.insuredId,
    vehicle:{
    brand: '',
    model: '',
    registrationNumber: '',
-   insuredId: '',
+   insuredId: vInsuredId,
    },
    insureds:[]
   }
  },
+  computed: {
+  	isDisabled: function(){
+     return this.$route.params.insuredId ? true : false;
+    }
+  },
  created: async function(){
   try {
    let response = await InsuredService.getAllInsureds();

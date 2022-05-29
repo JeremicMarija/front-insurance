@@ -46,6 +46,11 @@ const routes = [
     component: AddVehicle
   },
   {
+    path: '/vehicles/add/:insuredId',
+    name: 'AddVehiclesByInsuredId',
+    component: AddVehicle
+  },
+  {
     path: '/vehicles/edit/:vehicleId',
     name: 'EditVehicles',
     component: EditVehicle

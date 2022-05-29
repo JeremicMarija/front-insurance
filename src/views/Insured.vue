@@ -67,7 +67,9 @@
          <i class="fas fa-edit"></i>
         </router-link>
         <router-link :to="`/vehicles/insured/${insured.id}`"  class="btn btn-success btn-sm mx-2">View vehicles</router-link>
-        <router-link :to="`/vehicles/add`" class="btn btn-success btn-sm">Add Vehicle</router-link>
+        <!-- <router-link :to="`/vehicles/add`" class="btn btn-success btn-sm">Add Vehicle</router-link> -->
+        <button @click="addVehicleForInsured(insured.id)" class="btn btn-success btn-sm">Add Vehicle</button>
+
        </td>
       </tr>
      </tbody>
@@ -105,7 +107,10 @@ export default {
   }
  },
  methods: {
-  
+   addVehicleForInsured: function(id){
+
+   this.$router.push(`/vehicles/add/${id}`);
+  }
  }
 }
 </script>
