@@ -66,6 +66,11 @@ const routes = [
     component: AddMaterialDamage
   },
   {
+    path: '/materialDamages/add/:vehicleId',
+    name: 'AddMaterialDamageByVehicleId',
+    component: AddMaterialDamage
+  },
+  {
     path: '/materialDamages/edit/:materialDamageId',
     name: 'EditMaterialDamage',
     component: EditMaterialDamage

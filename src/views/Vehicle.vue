@@ -61,7 +61,7 @@
        <td>{{vehicle.insured.name + ' ' + vehicle.insured.surname}}</td>
        <td>
         <router-link :to="`/vehicles/edit/${vehicle.id}`" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></router-link>
-        <router-link :to="`/materialDamages/add`" class="btn btn-success btn-sm mx-2">Add Material Damage</router-link>
+        <button @click="addMaterialDamageForVehicle(vehicle.id)" class="btn btn-success btn-sm mx-2">Add Material Damage</button>
         </td>
       </tr>
      </tbody>
@@ -110,6 +110,12 @@ export default {
   } catch (error) {
    this.errorMessage = error;
    this.loading = false;
+  }
+ },
+ methods:{
+   addMaterialDamageForVehicle: function(id){
+
+   this.$router.push(`/materialDamages/add/${id}`);
   }
  }
 }

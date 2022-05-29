@@ -60,7 +60,7 @@ export default {
    insureds:[]
   }
  },
-  computed: {
+ computed: {
   	isDisabled: function(){
      return this.$route.params.insuredId ? true : false;
     }

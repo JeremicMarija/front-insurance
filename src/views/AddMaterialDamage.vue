@@ -28,7 +28,7 @@
      </select>
     </div>
     <div class="mb-2">
-     <select v-model="materialDamage.vehicleId" v-if="vehicles.length > 0" class="form-control" >
+     <select :disabled = "isDisabled" ref="selectVehicle" id="selectVehicle" v-model="materialDamage.vehicleId" v-if="vehicles.length > 0" class="form-control" >
       <option value="">Select Vehicle...</option>
       <option :value="vehicle.id" v-for="vehicle of vehicles" :key="vehicle.id">{{vehicle.brand + ' ' + vehicle.model + ' ' + vehicle.registrationNumber}}</option>
      </select>
@@ -57,17 +57,24 @@ import {CityService} from "@/services/CityService";
 export default {
  name: "AddMaterialDamage",
  data: function(){
+   const mVehicleId = this.$route.params.vehicleId || '';
   return{
+   vehicleId: this.$route.params.vehicleId,
    materialDamage:{
     entryDate: '',
     typeOfDamage: '',
     cityId: '',
-    vehicleId: '',
+    vehicleId: mVehicleId,
    },
    cities:[],
    vehicles:[],
   }
  },
+ computed: {
+  	isDisabled: function(){
+     return this.$route.params.vehicleId ? true : false;
+    }
+  },
  created: async function(){
   try {
    let responseCity = await CityService.getAllCities();
