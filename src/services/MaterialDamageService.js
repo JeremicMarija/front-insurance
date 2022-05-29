@@ -11,6 +11,11 @@ export class MaterialDamageService{
   let dataURL = `${this.serverURL}/materialdamages/${materialDamageId}`;
   return axios.get(dataURL);
  }
+ static getMaterialDamagesByVehicle(vehicleId){
+  let dataURL = `${this.serverURL}/materialdamages/vehicle/${vehicleId}`;
+  return axios.get(dataURL)
+ }
+
  static createMaterialDamage(materialDamage){
   let dataURL = `${this.serverURL}/materialdamages`;
   return axios.post(dataURL,materialDamage);

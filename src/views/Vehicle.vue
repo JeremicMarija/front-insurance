@@ -61,6 +61,7 @@
        <td>{{vehicle.insured.name + ' ' + vehicle.insured.surname}}</td>
        <td>
         <router-link :to="`/vehicles/edit/${vehicle.id}`" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></router-link>
+        <router-link :to="`/materialdamages/vehicle/${vehicle.id}`" class="btn btn-success btn-sm mx-2">View Material Damages</router-link>
         <button @click="addMaterialDamageForVehicle(vehicle.id)" class="btn btn-success btn-sm mx-2">Add Material Damage</button>
         </td>
       </tr>
