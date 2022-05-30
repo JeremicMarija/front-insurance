@@ -67,8 +67,8 @@
 
 <script>
 import {MaterialDamageService} from '@/services/MaterialDamageService';
-import Spinner from '@/components/Spinner.vue'
 import { VehicleService } from '@/services/VehicleService';
+import Spinner from '@/components/Spinner.vue'
 export default {
  name: 'ShowMaterialDamagesOfVehicle',
  components: {

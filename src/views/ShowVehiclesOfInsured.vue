@@ -1,6 +1,9 @@
 <template>
  <div class="container mt-3">
   <p class="h3 text-success fw-bold">All Vehicles Of Insured</p>
+  <p class="hw text-success mb-0">Name: <span class="fw-bold">{{insured.name}}</span> </p>
+  <p class="hw text-success mb-0">Surname: <span class="fw-bold">{{insured.surname}}</span> </p>
+  <p class="hw text-success mb-0">Policy Number: <span class="fw-bold">{{insured.policyNumber}}</span> </p>
   <!-- Spinner -->
   <div v-if="loading">
    <div class="container">
@@ -57,13 +60,13 @@
   
  </div>
  
- <!-- <pre>{{insuredId}}</pre>
- <pre>{{vehicles}}</pre> -->
+ <!-- <pre>{{insured}}</pre> -->
+
 </template>
 <script>
 import {VehicleService} from "@/services/VehicleService";
-// import {InsuredService} from "@/services/InsuredService";
 import Spinner from '@/components/Spinner.vue'
+import { InsuredService } from '@/services/InsuredService';
 export default {
  name: 'ShowVehiclesOfInsured',
  components: {
@@ -74,7 +77,9 @@ export default {
    insuredId: this.$route.params.insuredId,
    loading: false,
    vehicles: [],
+   insured: {},
    errorMessage: null,
+
   }
  },
  created: async function(){
@@ -83,6 +88,9 @@ export default {
    let response = await VehicleService.getVehiclesByInsured(this.insuredId);
    // console.log(response.data);
    this.vehicles = response.data;
+   let responseInsured = await InsuredService.getInsured(this.insuredId);
+  //  console.log(responseInsured.data);
+   this.insured = responseInsured.data;
    this.loading = false;
   } catch (error) {
    this.errorMessage = error;

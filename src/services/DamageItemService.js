@@ -9,8 +9,13 @@ export class DamageItemService{
  }
  static getDamageItem(damageItemId){
   let dataURL = `${this.serverURL}/materialdamageitems/${damageItemId}`;
-  return axios.get(dataURL)
+  return axios.get(dataURL);
  }
+ static getDamageItemByMaterialDamage(materialDamageId){
+  let dataURL = `${this.serverURL}/materialdamageitems/materialdamage/${materialDamageId}`;
+  return axios.get(dataURL);
+ }
+
  static createDamageItem(damageItem){
   let dataURL = `${this.serverURL}/materialdamageitems`;
   return axios.post(dataURL, damageItem);
