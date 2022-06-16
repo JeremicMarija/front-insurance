@@ -1,7 +1,30 @@
-import { createApp } from 'vue'
+import { Vue, createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import axios from 'axios'
+const self = this;
+axios.interceptors.request.use(
+ (config) => {
+  if(localStorage.getItem('Authorization')){
+   config.headers['Authorization'] = `Bearer ${localStorage.getItem('Authorization')}`;
+  }
+  return config;
+ },
+ (error) => {
+  return Promise.reject(error);
+ });
+
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+ // Do something with response data
+ console.log(response, 'response');
+ return response;
+}, function (error) {
+ // Do something with response error
+ //return self.$router.push('/login');
+ window.location.href = "login";
+ return Promise.reject(error);
+});
 
 
 
@@ -14,4 +37,4 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 
 import "./styles.css"
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App).use(router).mount('#app')

@@ -41,7 +41,7 @@
    </div>
   </div>
 <!-- <pre>{{vehicles}}</pre> -->
-  <div class="row mt-4">
+  <div class="row mt-4" v-if="vehicles.length > 0">
    <div class="col">
     <table class="table table-hover text-center table-striped shadow-lg">
      <thead class="bg-success text-white">
