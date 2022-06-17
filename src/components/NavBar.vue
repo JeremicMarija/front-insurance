@@ -14,16 +14,22 @@
       <router-link class="nav-link px-4" to="/materialDamages">Material Damages</router-link>
      </li>
     </ul>
-
    </div>
+   <button class="btn btn-outline-light" id="logout-btn" @click.prevent="logout()">Logout</button>
   </div>
-
+  
  </nav>
 </template>
 
 <script>
 export default {
  name: 'NavBar',
+ methods: {
+  logout: function(){
+   localStorage.removeItem("Authorization");
+   window.location.href = "login";
+  }
+ }
 }
 </script>
 

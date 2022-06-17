@@ -123,4 +123,17 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('Authorization')
+    // If logged in, or going to the Login page.
+    if (token || to.name === 'Login') {
+      // Continue to page.
+      next()
+    } else {
+      // Not logged in, redirect to login.
+      next({name: 'Login'})
+    }
+  }
+ );
+
 export default router

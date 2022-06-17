@@ -40,7 +40,7 @@ export default {
   login: async function(){
    try {
     let response = await LoginService.login(this.user);
-    console.log(response.data);
+    // console.log(response.data);
     localStorage.setItem('Authorization', response.data.jwt);
     if(response){
      return this.$router.push('/');
