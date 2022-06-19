@@ -20,10 +20,11 @@ axios.interceptors.response.use(function (response) {
  // console.log(response, 'response');
  return response;
 }, function (error) {
- // Do something with response error
- //return self.$router.push('/login');
- localStorage.removeItem("Authorization");
- window.location.href = "login";
+ console.log(error);
+ if(error.response.status === 403){
+  localStorage.removeItem("Authorization");
+  window.location.href = "login";
+ }
  return Promise.reject(error);
 });
 

@@ -24,7 +24,6 @@
      <select v-model="materialDamage.cityId" v-if="cities.length > 0" class="form-control" >
       <option value="">Select City...</option>
       <option :value="city.id" v-for="city of cities" :key="city.id">{{city.name}}</option>
-      <!-- <option value="">Novi Sad</option> -->
      </select>
     </div>
     <div class="mb-2">
@@ -45,9 +44,8 @@
   </div>
  </div>
 </div>
-<pre>{{materialDamage}}</pre>
-<!-- <pre>{{vehicles}}</pre> -->
-<!-- <pre>{{cities}}</pre> -->
+<!-- <pre>{{materialDamage}}</pre> -->
+
 </template>
 <script>
 

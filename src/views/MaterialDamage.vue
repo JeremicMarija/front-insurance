@@ -9,7 +9,7 @@
      <div class="col-md-6 mt-3">
       <div class="row">
        <div class="col">
-        <input type="text" class="form-control" placeholder="Search By City">
+        <input type="text" class="form-control" placeholder="Search By Vehicle REG.NUM.">
        </div>
        <div class="col">
         <input type="submit" class="btn btn-outline-dark">

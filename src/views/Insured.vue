@@ -4,12 +4,18 @@
    <p class="h3 text-success fw-bold">Insureds
     <router-link to="/insureds/add" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> New</router-link>
    </p>
-   <form action="">
+   <form action="" @submit.prevent="search()">
     <div class="row">
-     <div class="col-md-6 mt-3">
+     <div class="col-md-12 mt-3">
       <div class="row">
        <div class="col">
-        <input type="text" class="form-control" placeholder="Search Name">
+        <input type="text" v-model="name" class="form-control" placeholder="Search By Name...">
+       </div>
+       <div class="col">
+        <input type="text" v-model="surname" class="form-control" placeholder="Search By Surname...">
+       </div>
+       <div class="col">
+        <input type="text" v-model="policyNumber" class="form-control" placeholder="Search By PolicyNumber...">
        </div>
        <div class="col">
         <input type="submit" class="btn btn-outline-dark">
@@ -90,7 +96,10 @@ export default {
   return{
    loading: false,
    insureds:[],
-   errorMessage: null
+   errorMessage: null,
+   name:'',
+   surname:'',
+   policyNumber:'',
   }
  },
  created: async function(){
@@ -108,7 +117,16 @@ export default {
    addVehicleForInsured: function(id){
 
    this.$router.push(`/vehicles/add/${id}`);
-  }
+  },
+  search: async function(){
+    try{
+      let responseSearch = await InsuredService.search(this.name,this.surname,this.policyNumber)
+      console.log(responseSearch.data);
+      this.insureds = responseSearch.data;
+    }catch (error) {
+    console.log(error);
+   }
+  },
  }
 }
 </script>

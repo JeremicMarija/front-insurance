@@ -9,7 +9,7 @@
      <div class="col-md-6 mt-3">
       <div class="row">
        <div class="col">
-      <input type="text" class="form-control" placeholder="Search Brand">
+      <input type="text" class="form-control" placeholder="Search By Registration Number">
      </div>
      <div class="col">
       <input type="submit" class="btn btn-outline-dark">

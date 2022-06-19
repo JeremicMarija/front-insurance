@@ -48,7 +48,7 @@
       </select>
      </div>
      <div class="mb-2">
-      <input v-model="materialDamage.id" type="text" class="form-control" placeholder="Material Damage ID">
+      <input disabled hidden v-model="materialDamage.id" type="text" class="form-control" placeholder="Material Damage ID">
      </div>
      <div class="mb-2">
       <input type="submit" class="btn btn-success" value="Create Damage Item">
