@@ -17,6 +17,11 @@ export class VehicleService{
   return axios.get(dataURL)
  }
 
+ static search(registrationNumber){
+  let dataURL = `${this.serverURL}/vehicles/search?registrationNumber=${registrationNumber}`;
+  return axios.get(dataURL);
+ }
+
  static createVehicle(vehicle){
   let dataURL = `${this.serverURL}/vehicles`;
   return axios.post(dataURL, vehicle);

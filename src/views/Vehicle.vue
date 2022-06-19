@@ -4,16 +4,16 @@
    <p class="h3 text-success fw-bold">Vehicles
     <router-link to="/vehicles/add" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> New</router-link>
    </p>
-   <form action="">
+   <form action="" @submit.prevent="search()">
     <div class="row">
      <div class="col-md-6 mt-3">
       <div class="row">
        <div class="col">
-      <input type="text" class="form-control" placeholder="Search By Registration Number">
-     </div>
-     <div class="col">
-      <input type="submit" class="btn btn-outline-dark">
-     </div>
+        <input v-model="registrationNumber" type="text" class="form-control" placeholder="Search By Registration Number">
+       </div>
+       <div class="col">
+        <input type="submit" class="btn btn-outline-dark">
+       </div>
       </div>
      </div>
     </div>
@@ -70,7 +70,6 @@
    </div>
   </div>
  </div>
- <!-- <pre>{{vehicles}}</pre> -->
 </template>
 <script>
 import {VehicleService} from "@/services/VehicleService";
@@ -86,7 +85,7 @@ export default {
    loading: false,
    vehicles:[],
    errorMessage: null,
-  //  insureds: [],
+   registrationNumber: '',
   }
  },
  created: async function(){
@@ -94,20 +93,7 @@ export default {
    this.loading = true;
    let response = await VehicleService.getAllVehicles();
    this.vehicles = response.data;
-  //  for (var i = 0; i < this.vehicles.length; i++){
-  //    console.log(this.vehicles[i].insuredId);
-  //     let insuredResponse = await InsuredService.getInsured(this.vehicles[i].insuredId);
-  //     // this.insureds = insuredResponse.data;
-  //     // console.log(this.insureds);
-  //     // console.log(insuredResponse.data);
-  //     this.insureds.push(insuredResponse.data);
-  //     // let arrInsureds = [];
-  //     // arrInsureds.push(insuredResponse.data);
-  //  }
-  //  this.insureds = insuredResponse.data;
-  //  console.log(this.insureds);
-
-    this.loading = false;
+   this.loading = false;
   } catch (error) {
    this.errorMessage = error;
    this.loading = false;
@@ -117,6 +103,17 @@ export default {
    addMaterialDamageForVehicle: function(id){
 
    this.$router.push(`/materialDamages/add/${id}`);
+  },
+  search: async function(){
+    try{
+      let responseSearch = await VehicleService.search(this.registrationNumber);
+      this.vehicles = responseSearch.data;
+    }catch (error) {
+     console.log(error);
+     if(error.response.status === 404){
+      this.errorMessage = "Vehicle Not Found";
+     }
+   }
   }
  }
 }
