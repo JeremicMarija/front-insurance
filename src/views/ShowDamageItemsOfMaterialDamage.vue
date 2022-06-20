@@ -1,9 +1,11 @@
 <template>
  <div class="container mt-3">
-  <p class="h3 text-success fw-bold">All Damage Items of Material Damage:</p>
-  <p class="hw text-success mb-0">Entry Date: <span class="fw-bold">{{materialDamage.entryDate}}</span></p>
-  <p class="hw text-success mb-0">Type Of Damage: <span class="fw-bold">{{materialDamage.typeOfDamage}}</span></p>
-  <p class="hw text-success mb-0">Vehicle: <span class="fw-bold">{{vehicle.brand + ' ' + vehicle.model + ' ' + vehicle.registrationNumber}}</span></p>
+   <div v-if="!errorMessage">
+      <p class="h3 text-success fw-bold">All Damage Items of Material Damage:</p>
+      <p class="hw text-success mb-0">Entry Date: <span class="fw-bold">{{materialDamage.entryDate}}</span></p>
+      <p class="hw text-success mb-0">Type Of Damage: <span class="fw-bold">{{materialDamage.typeOfDamage}}</span></p>
+      <p class="hw text-success mb-0">Vehicle: <span class="fw-bold">{{vehicle.brand + ' ' + vehicle.model + ' ' + vehicle.registrationNumber}}</span></p>
+   </div>
 
      <!-- Spinner -->
   <div v-if="loading">
@@ -92,7 +94,9 @@ export default {
    // console.log(responseVehicle.data);
    this.loading = false;
   } catch (error) {
-   this.errorMessage = error;
+   if(error.response.status === 404){
+      this.errorMessage = 'There is no damage item for the requested material damage';
+    }
    this.loading = false;
   }
  },

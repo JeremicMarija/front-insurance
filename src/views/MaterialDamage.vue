@@ -4,12 +4,12 @@
    <p class="h3 text-success fw-bold">Material Damages
     <router-link to="/materialDamages/add" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> New</router-link>
    </p>
-   <form action="">
+   <form action="" @submit.prevent="search()">
     <div class="row">
      <div class="col-md-6 mt-3">
       <div class="row">
        <div class="col">
-        <input type="text" class="form-control" placeholder="Search By Vehicle REG.NUM.">
+        <input v-model="vehicleRegNum" type="text" class="form-control" placeholder="Search By Vehicle REG.NUM.">
        </div>
        <div class="col">
         <input type="submit" class="btn btn-outline-dark">
@@ -71,7 +71,7 @@
    </div>
   </div>
  </div>
- <!-- <pre>{{materialDamages}}</pre> -->
+
 </template>
 
 
@@ -87,7 +87,8 @@ export default {
   return{
    loading: false,
    materialDamages:[],
-   errorMessage: null
+   errorMessage: null,
+   vehicleRegNum: '',
   }
  },
  created: async function(){
@@ -99,6 +100,20 @@ export default {
   } catch (error) {
    this.errorMessage = error;
    this.loading = false;
+  }
+ },
+ methods:{
+  search: async function(){
+   try {
+    this.errorMessage = false;
+    let responseSearch = await MaterialDamageService.search(this.vehicleRegNum);
+    console.log(responseSearch.data);
+    this.materialDamages = responseSearch.data;
+   } catch (error) {
+    console.log(error);
+     this.materialDamages = [];
+     this.errorMessage = "Material Damage Not Found";
+   }
   }
  }
 

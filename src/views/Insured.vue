@@ -120,12 +120,14 @@ export default {
   },
   search: async function(){
     try{
+      this.errorMessage = false;
       let responseSearch = await InsuredService.search(this.name,this.surname,this.policyNumber)
       console.log(responseSearch.data);
       this.insureds = responseSearch.data;
     }catch (error) {
-    console.log(error);
+    // console.log(error);
     if(error.response.status === 404){
+      this.insureds = [];
       this.errorMessage = "Insured Not Found";
      }
    }

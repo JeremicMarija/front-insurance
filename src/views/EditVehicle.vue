@@ -64,8 +64,6 @@
    </div>
   </div>
 
-  <pre>{{vehicle}}</pre>
-  <!-- <pre>{{insured}}</pre> -->
 </template>
 
 <script>

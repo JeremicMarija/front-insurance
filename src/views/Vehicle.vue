@@ -106,11 +106,13 @@ export default {
   },
   search: async function(){
     try{
+      this.errorMessage = false;
       let responseSearch = await VehicleService.search(this.registrationNumber);
       this.vehicles = responseSearch.data;
     }catch (error) {
      console.log(error);
      if(error.response.status === 404){
+      this.vehicles = [];
       this.errorMessage = "Vehicle Not Found";
      }
    }

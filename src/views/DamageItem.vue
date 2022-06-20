@@ -57,8 +57,8 @@
    </div>
   </div>
  </div>
- <pre>{{damageItem}}</pre>
- <pre>{{materialDamage}}</pre>
+ <!-- <pre>{{damageItem}}</pre>
+ <pre>{{materialDamage}}</pre> -->
  <!-- <pre>{{damageTypes}}</pre> -->
 </template>
 

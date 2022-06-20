@@ -38,7 +38,6 @@
    </div>
   </div>
  </div>
- <pre>{{vehicle}}</pre>
 </template>
 <script>
 import {InsuredService} from "@/services/InsuredService";

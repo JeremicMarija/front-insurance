@@ -62,7 +62,6 @@
  </div>
 
 
-<pre>{{materialDamage}}</pre>
 </template>
 
 <script>

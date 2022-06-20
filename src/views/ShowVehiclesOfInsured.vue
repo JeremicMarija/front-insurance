@@ -1,9 +1,11 @@
 <template>
  <div class="container mt-3">
-  <p class="h3 text-success fw-bold">All Vehicles Of Insured</p>
-  <p class="hw text-success mb-0">Name: <span class="fw-bold">{{insured.name}}</span> </p>
-  <p class="hw text-success mb-0">Surname: <span class="fw-bold">{{insured.surname}}</span> </p>
-  <p class="hw text-success mb-0">Policy Number: <span class="fw-bold">{{insured.policyNumber}}</span> </p>
+ <div v-if="!errorMessage">
+    <p class="h3 text-success fw-bold">All Vehicles Of Insured</p>
+    <p class="hw text-success mb-0">Name: <span class="fw-bold">{{insured.name}}</span> </p>
+    <p class="hw text-success mb-0">Surname: <span class="fw-bold">{{insured.surname}}</span> </p>
+    <p class="hw text-success mb-0">Policy Number: <span class="fw-bold">{{insured.policyNumber}}</span> </p>
+ </div>
   <!-- Spinner -->
   <div v-if="loading">
    <div class="container">
@@ -93,7 +95,11 @@ export default {
    this.insured = responseInsured.data;
    this.loading = false;
   } catch (error) {
-   this.errorMessage = error;
+    if(error.response.status === 404){
+      this.errorMessage = 'There is no vehicle for the requested insured';
+    }
+    // console.log(error);
+  //  this.errorMessage = error;
    this.loading = false;
   }
  },
