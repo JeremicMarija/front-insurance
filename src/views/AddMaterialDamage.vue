@@ -11,23 +11,23 @@
   <div class="col-md-4">
    <form action="" @submit.prevent="materialDamageCreate()">
     <div class="mb-2">
-     <input v-model="materialDamage.entryDate" type="date" class="form-control" placeholder="Entry Date">
+     <input required v-model="materialDamage.entryDate" type="date" class="form-control" placeholder="Entry Date">
     </div>
     <div class="mb-2">
-     <select v-model="materialDamage.typeOfDamage" name="" id="" class="form-control" >
+     <select required v-model="materialDamage.typeOfDamage" name="" id="" class="form-control" >
       <option value="">Select Type Of Damage...</option>
       <option value="TOTAL_DAMAGE">TOTAL_DAMAGE</option>
       <option value="PARTIAL_DAMAGE">PARTIAL_DAMAGE</option>
      </select>
     </div>
     <div class="mb-2">
-     <select v-model="materialDamage.cityId" v-if="cities.length > 0" class="form-control" >
+     <select required v-model="materialDamage.cityId" v-if="cities.length > 0" class="form-control" >
       <option value="">Select City...</option>
       <option :value="city.id" v-for="city of cities" :key="city.id">{{city.name}}</option>
      </select>
     </div>
     <div class="mb-2">
-     <select :disabled = "isDisabled" ref="selectVehicle" id="selectVehicle" v-model="materialDamage.vehicleId" v-if="vehicles.length > 0" class="form-control" >
+     <select required :disabled = "isDisabled" ref="selectVehicle" id="selectVehicle" v-model="materialDamage.vehicleId" v-if="vehicles.length > 0" class="form-control" >
       <option value="">Select Vehicle...</option>
       <option :value="vehicle.id" v-for="vehicle of vehicles" :key="vehicle.id">{{vehicle.brand + ' ' + vehicle.model + ' ' + vehicle.registrationNumber}}</option>
      </select>

@@ -33,22 +33,22 @@
    <div class="col-md-4">
     <form action="" @submit.prevent="createDamageItem()">
      <div class="mb-2">
-      <input v-model="damageItem.itemNumber" type="number" class="form-control" placeholder="Item Number">
+      <input required v-model="damageItem.itemNumber" type="number" class="form-control" placeholder="Item Number">
      </div>
      <div class="mb-2">
-      <input v-model="damageItem.description" type="text" class="form-control" placeholder="Description">
+      <input required v-model="damageItem.description" type="text" class="form-control" placeholder="Description">
      </div>
      <div class="mb-2">
-      <input v-model="damageItem.estimatedPrice" type="number" class="form-control" placeholder="Estimated Price">
+      <input required v-model="damageItem.estimatedPrice" type="number" class="form-control" placeholder="Estimated Price">
      </div>
      <div class="mb-2">
-      <select v-model="damageItem.damageTypeId"  class="form-control" v-if="damageTypes.length > 0">
+      <select required v-model="damageItem.damageTypeId"  class="form-control" v-if="damageTypes.length > 0">
        <option value="">Select Damage Type...</option>
        <option :value="damageType.id" v-for="damageType of damageTypes" :key="damageType.id">{{damageType.name}}</option>
       </select>
      </div>
      <div class="mb-2">
-      <input disabled hidden v-model="materialDamage.id" type="text" class="form-control" placeholder="Material Damage ID">
+      <input required disabled hidden v-model="materialDamage.id" type="text" class="form-control" placeholder="Material Damage ID">
      </div>
      <div class="mb-2">
       <input type="submit" class="btn btn-success" value="Create Damage Item">

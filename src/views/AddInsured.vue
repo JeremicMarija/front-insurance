@@ -11,19 +11,19 @@
    <div class="col-md-4">
     <form action="" @submit.prevent="insuredCreate()">
      <div class="mb-2">
-      <input v-model="insured.name" type="text" class="form-control" placeholder="First Name">
+      <input required v-model="insured.name" type="text" class="form-control" placeholder="First Name">
      </div>
      <div class="mb-2">
-      <input v-model="insured.surname" type="text" class="form-control" placeholder="Last Name">
+      <input required v-model="insured.surname" type="text" class="form-control" placeholder="Last Name">
      </div>
      <div class="mb-2">
-      <input v-model="insured.dateOfBirth" type="date" class="form-control" placeholder="Data of Birth">
+      <input required v-model="insured.dateOfBirth" type="date" class="form-control" placeholder="Data of Birth">
      </div>
      <div class="mb-2">
-      <input v-model="insured.policyNumber" type="text" class="form-control" placeholder="Policy Number">
+      <input required v-model="insured.policyNumber" type="text" class="form-control" placeholder="Policy Number">
      </div>
      <div class="mb-2">
-      <select v-model="insured.typeOfInsurance" name="" id="" class="form-control">
+      <select required v-model="insured.typeOfInsurance" name="" id="" class="form-control">
        <option disabled value="">Choose...</option>
        <option value="TOTAL_INSURANCE">TOTAL_INSURANCE</option>
        <option value="PARCIAL_INSURANCE">PARCIAL_INSURANCE</option>

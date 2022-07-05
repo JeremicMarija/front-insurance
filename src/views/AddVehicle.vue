@@ -12,16 +12,16 @@
    <div class="col-md-4">
     <form action="" @submit.prevent="vehicleCreate()">
      <div class="mb-2">
-      <input v-model="vehicle.brand" type="text" class="form-control" placeholder="Brand">
+      <input required v-model="vehicle.brand" type="text" class="form-control" placeholder="Brand">
      </div>
      <div class="mb-2">
-      <input v-model="vehicle.model" type="text" class="form-control" placeholder="Model">
+      <input required v-model="vehicle.model" type="text" class="form-control" placeholder="Model">
      </div>
      <div class="mb-2">
-      <input v-model="vehicle.registrationNumber" type="text" class="form-control" placeholder="Registartion Number">
+      <input required v-model="vehicle.registrationNumber" type="text" class="form-control" placeholder="Registartion Number">
      </div>
      <div class="mb-2">
-      <select :disabled = "isDisabled" name="" ref="selectInsured" id="selectInsured" v-model="vehicle.insuredId" class="form-control" v-if="insureds.length > 0">
+      <select required :disabled = "isDisabled" name="" ref="selectInsured" id="selectInsured" v-model="vehicle.insuredId" class="form-control" v-if="insureds.length > 0">
        <option value="">Select Insured...</option>
        <option :value="insured.id" v-for="insured of insureds" :key="insured.id">{{insured.name + ' ' + insured.surname}}</option>
       </select>
