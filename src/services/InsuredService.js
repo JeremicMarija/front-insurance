@@ -12,6 +12,11 @@ export class InsuredService{
   return axios.get(dataURL);
  }
 
+ static getReportOfInsureds(){
+  let dataURL = `${this.serverURL}/insureds/report/pdf`;
+  return axios.get(dataURL);
+ }
+
  static search(name,surname,policyNumber){
   let dataURL = `${this.serverURL}/insureds/search?name=${name}&surname=${surname}&policyNumber=${policyNumber}`;
   return axios.get(dataURL);

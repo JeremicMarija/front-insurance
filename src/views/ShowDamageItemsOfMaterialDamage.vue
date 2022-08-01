@@ -6,6 +6,12 @@
       <p class="hw text-success mb-0">Type Of Damage: <span class="fw-bold">{{materialDamage.typeOfDamage}}</span></p>
       <p class="hw text-success mb-0">Vehicle: <span class="fw-bold">{{vehicle.brand + ' ' + vehicle.model + ' ' + vehicle.registrationNumber}}</span></p>
    </div>
+   <div class="row">
+      <div class="col-md-4 mt-3"> 
+         <button class="btn btn-success btn-sm" @click="download">Download pdf list of Damage Items</button>
+      </div>
+      <p class="h5 text-success fw-bold mt-2">{{reportMessage}}</p>
+   </div>
 
      <!-- Spinner -->
   <div v-if="loading">
@@ -79,7 +85,8 @@ export default {
    damageItems: [],
    materialDamage: {},
    errorMessage: null,
-   vehicle: {}
+   vehicle: {},
+   reportMessage: null
   }
  },
  created: async function(){
@@ -100,5 +107,12 @@ export default {
    this.loading = false;
   }
  },
+ methods: {
+   download: async function(){
+      let responseReport = await DamageItemService.getReportDamageItemsOfMaterialDamage(this.materialDamageId);
+      console.log(responseReport.data)
+      this.reportMessage = responseReport.data;
+  }
+ }
 }
 </script>

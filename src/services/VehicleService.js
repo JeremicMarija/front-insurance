@@ -16,6 +16,14 @@ export class VehicleService{
   let dataURL = `${this.serverURL}/vehicles/insured/${insuredId}`;
   return axios.get(dataURL)
  }
+ static getReportOfVehicles(){
+  let dataURL = `${this.serverURL}/vehicles/report/pdf`;
+  return axios.get(dataURL);
+ }
+ static getReportVehiclesOfInsured(insuredId){
+  let dataURL = `${this.serverURL}/vehicles/insured/${insuredId}/report`;
+  return axios.get(dataURL);
+ }
 
  static search(registrationNumber){
   let dataURL = `${this.serverURL}/vehicles/search?registrationNumber=${registrationNumber}`;

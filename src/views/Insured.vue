@@ -4,6 +4,10 @@
    <p class="h3 text-success fw-bold">Insureds
     <router-link to="/insureds/add" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> New</router-link>
    </p>
+   <div class="col-md-4"> 
+    <button class="btn btn-success btn-sm" @click="download">Download pdf list of Insureds</button>
+   </div>
+   <p class="h5 text-success fw-bold mt-2">{{reportMessage}}</p>
    <form action="" @submit.prevent="search()">
     <div class="row">
      <div class="col-md-12 mt-3">
@@ -56,7 +60,7 @@
        <th>First Name</th>
        <th>Last Name</th>
        <th>Date of Birth</th>
-       <th>Police Number</th>
+       <th>Policy Number</th>
        <th>Type of Insurance</th>
        <th>Action</th>
       </tr>
@@ -100,6 +104,7 @@ export default {
    name:'',
    surname:'',
    policyNumber:'',
+   reportMessage: null
   }
  },
  created: async function(){
@@ -132,6 +137,11 @@ export default {
      }
    }
   },
+  download: async function(){
+    let responseReport = await InsuredService.getReportOfInsureds();
+    console.log(responseReport.data)
+    this.reportMessage = responseReport.data;
+  }
  }
 }
 </script>

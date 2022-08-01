@@ -11,9 +11,19 @@ export class MaterialDamageService{
   let dataURL = `${this.serverURL}/materialdamages/${materialDamageId}`;
   return axios.get(dataURL);
  }
+ static getReportOfMaterialDamages(){
+  let dataURL = `${this.serverURL}/materialdamages/report/pdf`;
+  return axios.get(dataURL);
+ }
+
  static getMaterialDamagesByVehicle(vehicleId){
   let dataURL = `${this.serverURL}/materialdamages/vehicle/${vehicleId}`;
   return axios.get(dataURL)
+ }
+ 
+ static getReportMaterialDamgesOfVehicle(vehicleId){
+  let dataURL = `${this.serverURL}/materialdamages/vehicle/${vehicleId}/report`;
+  return axios.get(dataURL);
  }
 
  static search(vehicleRegNum){

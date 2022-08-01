@@ -6,6 +6,12 @@
     <p class="hw text-success mb-0">Brand: <span class="fw-bold">{{vehicle.model}}</span> </p>
     <p class="hw text-success mb-0">Registration Number: <span class="fw-bold">{{vehicle.registrationNumber}}</span> </p>
   </div>
+  <div class="row">
+    <div class="col-md-4 mt-3"> 
+      <button class="btn btn-success btn-sm" @click="download">Download pdf list of Material Damages</button>
+    </div>
+    <p class="h5 text-success fw-bold mt-2">{{reportMessage}}</p>
+  </div>
 
    <!-- Spinner -->
   <div v-if="loading">
@@ -82,7 +88,8 @@ export default {
    loading: false,
    materialDamages:[],
    vehicle:{},
-   errorMessage: null
+   errorMessage: null,
+   reportMessage: null
   }
  },
  created: async function(){
@@ -100,6 +107,13 @@ export default {
       this.errorMessage = 'There is no material damage for the requested vehicle';
     }
    this.loading = false;
+  }
+ },
+ methods: {
+  download: async function(){
+  let responseReport = await MaterialDamageService.getReportMaterialDamgesOfVehicle(this.vehicleId);
+  console.log(responseReport.data)
+  this.reportMessage = responseReport.data;
   }
  }
 }

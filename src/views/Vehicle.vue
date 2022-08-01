@@ -4,6 +4,10 @@
    <p class="h3 text-success fw-bold">Vehicles
     <router-link to="/vehicles/add" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> New</router-link>
    </p>
+   <div class="col-md-4"> 
+      <button class="btn btn-success btn-sm" @click="download">Download pdf list of Vehicles</button>
+   </div>
+   <p class="h5 text-success fw-bold mt-2">{{reportMessage}}</p>
    <form action="" @submit.prevent="search()">
     <div class="row">
      <div class="col-md-6 mt-3">
@@ -86,6 +90,7 @@ export default {
    vehicles:[],
    errorMessage: null,
    registrationNumber: '',
+   reportMessage: null
   }
  },
  created: async function(){
@@ -116,6 +121,11 @@ export default {
       this.errorMessage = "Vehicle Not Found";
      }
    }
+  },
+  download: async function(){
+    let responseReport = await VehicleService.getReportOfVehicles();
+    console.log(responseReport.data)
+    this.reportMessage = responseReport.data;
   }
  }
 }

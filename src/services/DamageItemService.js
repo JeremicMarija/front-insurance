@@ -16,6 +16,11 @@ export class DamageItemService{
   return axios.get(dataURL);
  }
 
+ static getReportDamageItemsOfMaterialDamage(materialDamageId){
+  let dataURL = `${this.serverURL}/materialdamageitems/materialdamage/${materialDamageId}/report`;
+  return axios.get(dataURL);
+ }
+ 
  static createDamageItem(damageItem){
   let dataURL = `${this.serverURL}/materialdamageitems`;
   return axios.post(dataURL, damageItem);

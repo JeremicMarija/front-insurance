@@ -6,6 +6,12 @@
     <p class="hw text-success mb-0">Surname: <span class="fw-bold">{{insured.surname}}</span> </p>
     <p class="hw text-success mb-0">Policy Number: <span class="fw-bold">{{insured.policyNumber}}</span> </p>
  </div>
+ <div class="row">
+  <div class="col-md-4 mt-3"> 
+  <button class="btn btn-success btn-sm" @click="download">Download pdf list of Vehicles</button>
+  </div>
+  <p class="h5 text-success fw-bold mt-2">{{reportMessage}}</p>
+ </div>
   <!-- Spinner -->
   <div v-if="loading">
    <div class="container">
@@ -81,6 +87,7 @@ export default {
    vehicles: [],
    insured: {},
    errorMessage: null,
+   reportMessage: null
 
   }
  },
@@ -107,6 +114,11 @@ export default {
    addMaterialDamageForVehicle: function(id){
 
    this.$router.push(`/materialDamages/add/${id}`);
+  },
+  download: async function(){
+    let responseReport = await VehicleService.getReportVehiclesOfInsured(this.insuredId);
+    console.log(responseReport.data)
+    this.reportMessage = responseReport.data;
   }
  }
 }
